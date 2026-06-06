@@ -99,6 +99,49 @@
         $('#progress-fill').style.width = pct + '%';
     }
 
+    // ───── Fullscreen ─────
+    function toggleFullscreen() {
+        const docEl = document.documentElement;
+        const requestFS = docEl.requestFullscreen || docEl.webkitRequestFullscreen || docEl.mozRequestFullScreen || docEl.msRequestFullscreen;
+        const exitFS = document.exitFullscreen || document.webkitExitFullscreen || document.mozCancelFullScreen || document.msExitFullscreen;
+        const fsElement = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement;
+
+        if (!fsElement) {
+            if (requestFS) {
+                requestFS.call(docEl).catch((err) => {
+                    console.error(`Error attempting to enable fullscreen: ${err.message}`);
+                });
+            }
+        } else {
+            if (exitFS) {
+                exitFS.call(document);
+            }
+        }
+    }
+
+    function isFullscreen() {
+        return !!(document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement);
+    }
+
+    function updateFullscreenIcon() {
+        const btn = $('#nav-fullscreen');
+        if (!btn) return;
+        
+        if (isFullscreen()) {
+            btn.innerHTML = `
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 14h6v6m10-6h-6v6M4 10h6V4m10 6h-6V4" />
+                </svg>
+            `;
+        } else {
+            btn.innerHTML = `
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
+                </svg>
+            `;
+        }
+    }
+
     // ───── Events ─────
     function bindEvents() {
         // Keyboard
@@ -116,6 +159,15 @@
         $('#nav-prev').addEventListener('click', prevSlide);
         $('#nav-next').addEventListener('click', nextSlide);
         $('#hero-start-btn').addEventListener('click', () => goToSlide(1));
+
+        const fullscreenBtn = $('#nav-fullscreen');
+        if (fullscreenBtn) {
+            fullscreenBtn.addEventListener('click', toggleFullscreen);
+        }
+        document.addEventListener('fullscreenchange', updateFullscreenIcon);
+        document.addEventListener('webkitfullscreenchange', updateFullscreenIcon);
+        document.addEventListener('mozfullscreenchange', updateFullscreenIcon);
+        document.addEventListener('MSFullscreenChange', updateFullscreenIcon);
 
         // Touch/Swipe
         let touchStartX = 0, touchStartY = 0;

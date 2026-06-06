@@ -12,7 +12,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=4">
 </head>
 
 <body>
@@ -64,6 +64,11 @@
             <button class="nav-btn" id="nav-next" aria-label="Next slide">
                 <svg width="20" height="20" viewBox="0 0 20 20">
                     <polyline points="8,4 14,10 8,16" stroke="currentColor" stroke-width="2" fill="none" />
+                </svg>
+            </button>
+            <button class="nav-btn" id="nav-fullscreen" aria-label="Toggle Fullscreen">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
                 </svg>
             </button>
         </div>
@@ -817,49 +822,11 @@
             <!-- Scalability Trilemma -->
             <div class="trilemma" id="trilemma">
                 <svg class="trilemma-svg" viewBox="0 0 400 360">
-                    <polygon points="200,30 50,330 350,330" fill="none" stroke="var(--cyan)" stroke-width="2"
-                        opacity="0.3" />
-                    <line x1="200" y1="30" x2="50" y2="330" stroke="url(#triGrad1)" stroke-width="2" class="tri-line" />
-                    <line x1="50" y1="330" x2="350" y2="330" stroke="url(#triGrad2)" stroke-width="2"
-                        class="tri-line" />
-                    <line x1="350" y1="330" x2="200" y2="30" stroke="url(#triGrad3)" stroke-width="2"
-                        class="tri-line" />
-                    <defs>
-                        <linearGradient id="triGrad1">
-                            <stop offset="0%" stop-color="var(--cyan)" />
-                            <stop offset="100%" stop-color="var(--purple)" />
-                        </linearGradient>
-                        <linearGradient id="triGrad2">
-                            <stop offset="0%" stop-color="var(--purple)" />
-                            <stop offset="100%" stop-color="var(--blue)" />
-                        </linearGradient>
-                        <linearGradient id="triGrad3">
-                            <stop offset="0%" stop-color="var(--blue)" />
-                            <stop offset="100%" stop-color="var(--cyan)" />
-                        </linearGradient>
-                    </defs>
+                    <polygon points="200,30 50,330 350,330" fill="rgba(0, 229, 255, 0.02)" stroke="var(--cyan)" stroke-width="2.5" class="tri-polygon" />
                 </svg>
-                <div class="tri-label tri-top">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                    </svg>
-                    <span>Security</span>
-                </div>
-                <div class="tri-label tri-left">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--purple)"
-                        stroke-width="1.5">
-                        <circle cx="12" cy="12" r="10" />
-                        <path
-                            d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
-                    </svg>
-                    <span>Decentralization</span>
-                </div>
-                <div class="tri-label tri-right">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5">
-                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
-                    </svg>
-                    <span>Scalability</span>
-                </div>
+                <div class="tri-label tri-top">Security</div>
+                <div class="tri-label tri-left">Decentralization</div>
+                <div class="tri-label tri-right">Scalability</div>
                 <div class="tri-center-label">Blockchain<br />Trilemma</div>
             </div>
             <div class="content-grid two-col" style="margin-top:1.5rem">
@@ -994,7 +961,7 @@
         </div>
     </section>
 
-    <script src="app.js"></script>
+    <script src="app.js?v=3"></script>
 </body>
 
 </html>
