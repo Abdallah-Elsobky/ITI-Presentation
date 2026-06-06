@@ -1,0 +1,3 @@
+@echo off
+echo Starting Blockchain Beyond Cryptocurrency Presentation...
+start "" "index.html"

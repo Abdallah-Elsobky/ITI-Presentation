@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Blockchain Beyond Cryptocurrency — How Decentralized Systems Are Transforming Industries. A premium interactive presentation.">
+    <title>Blockchain Beyond Cryptocurrency | Interactive Presentation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Loading Screen -->
+    <div id="loader" class="loader">
+        <div class="loader-content">
+            <div class="loader-chain">
+                <div class="loader-block" style="--i:0"></div>
+                <div class="loader-link"></div>
+                <div class="loader-block" style="--i:1"></div>
+                <div class="loader-link"></div>
+                <div class="loader-block" style="--i:2"></div>
+                <div class="loader-link"></div>
+                <div class="loader-block" style="--i:3"></div>
+            </div>
+            <p class="loader-text">Synchronizing Blockchain...</p>
+            <div class="loader-bar">
+                <div class="loader-bar-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Background Canvas -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav id="main-nav" class="nav">
+        <div class="nav-logo">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                <rect x="2" y="2" width="10" height="10" rx="2" stroke="var(--cyan)" stroke-width="1.5" fill="none" />
+                <rect x="16" y="2" width="10" height="10" rx="2" stroke="var(--cyan)" stroke-width="1.5" fill="none" />
+                <rect x="2" y="16" width="10" height="10" rx="2" stroke="var(--cyan)" stroke-width="1.5" fill="none" />
+                <rect x="16" y="16" width="10" height="10" rx="2" stroke="var(--cyan)" stroke-width="1.5" fill="none" />
+                <line x1="12" y1="7" x2="16" y2="7" stroke="var(--cyan)" stroke-width="1" />
+                <line x1="7" y1="12" x2="7" y2="16" stroke="var(--cyan)" stroke-width="1" />
+                <line x1="21" y1="12" x2="21" y2="16" stroke="var(--cyan)" stroke-width="1" />
+                <line x1="12" y1="21" x2="16" y2="21" stroke="var(--cyan)" stroke-width="1" />
+            </svg>
+            <span>BLOCKCHAIN</span>
+        </div>
+        <div class="nav-dots" id="nav-dots"></div>
+        <div class="nav-controls">
+            <span class="nav-slide-num" id="slide-counter">01 / 10</span>
+            <button class="nav-btn" id="nav-prev" aria-label="Previous slide">
+                <svg width="20" height="20" viewBox="0 0 20 20">
+                    <polyline points="12,4 6,10 12,16" stroke="currentColor" stroke-width="2" fill="none" />
+                </svg>
+            </button>
+            <button class="nav-btn" id="nav-next" aria-label="Next slide">
+                <svg width="20" height="20" viewBox="0 0 20 20">
+                    <polyline points="8,4 14,10 8,16" stroke="currentColor" stroke-width="2" fill="none" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progress-bar">
+        <div class="progress-bar-fill" id="progress-fill"></div>
+    </div>
+
+    <!-- ========== SECTIONS ========== -->
+
+    <!-- 1. HERO SECTION -->
+    <section class="slide active" id="slide-hero" data-index="0">
+        <div class="hero-overlay"></div>
+        <canvas id="hero-canvas" class="section-canvas"></canvas>
+        <div class="slide-content hero-content">
+            <div class="hero-badge">
+                <span class="hero-badge-dot"></span>
+                ITI — Information Technology Institute
+            </div>
+            <h1 class="hero-title">
+                <span class="hero-line hero-line-1">Blockchain</span>
+                <span class="hero-line hero-line-2">Beyond</span>
+                <span class="hero-line hero-line-3">Cryptocurrency</span>
+            </h1>
+            <p class="hero-subtitle">How Decentralized Systems Are Transforming Industries</p>
+            <div class="hero-cta">
+                <button class="btn-glow" id="hero-start-btn">
+                    <span>Begin Presentation</span>
+                    <svg width="20" height="20" viewBox="0 0 20 20">
+                        <polyline points="8,4 14,10 8,16" stroke="currentColor" stroke-width="2" fill="none" />
+                    </svg>
+                </button>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span class="hero-stat-num" data-count="7">0</span>
+                    <span class="hero-stat-label">Topics</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-num" data-count="6">0</span>
+                    <span class="hero-stat-label">Presenters</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-num" data-count="5">0</span>
+                    <span class="hero-stat-label">Industries</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. TEAM SECTION -->
+    <section class="slide" id="slide-team" data-index="1">
+        <canvas id="team-canvas" class="section-canvas"></canvas>
+        <div class="slide-content">
+            <div class="section-header">
+                <span class="section-tag">Our Team</span>
+                <h2 class="section-title">Presentation <span class="gradient-text">Team</span></h2>
+                <p class="section-desc">Meet the minds behind this exploration of decentralized systems</p>
+            </div>
+            <div class="team-grid" id="team-grid">
+                <div class="team-card" data-member="0" style="--delay: 0">
+                    <div class="team-card-glow"></div>
+                    <div class="team-card-inner">
+                        <div class="team-avatar">
+                            <div class="team-avatar-ring"></div>
+                            <div class="team-avatar-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)"
+                                    stroke-width="1.5">
+                                    <rect x="3" y="3" width="7" height="7" rx="1" />
+                                    <rect x="14" y="3" width="7" height="7" rx="1" />
+                                    <rect x="3" y="14" width="7" height="7" rx="1" />
+                                    <rect x="14" y="14" width="7" height="7" rx="1" />
+                                    <line x1="10" y1="6.5" x2="14" y2="6.5" />
+                                    <line x1="6.5" y1="10" x2="6.5" y2="14" />
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="team-name">Ahmed Bakry</h3>
+                        <p class="team-role">Introduction & Core Mechanics</p>
+                        <div class="team-topic-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)"
+                                stroke-width="1.5">
+                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card" data-member="1" style="--delay: 1">
+                    <div class="team-card-glow"></div>
+                    <div class="team-card-inner">
+                        <div class="team-avatar">
+                            <div class="team-avatar-ring"></div>
+                            <div class="team-avatar-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)"
+                                    stroke-width="1.5">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                    <circle cx="12" cy="12" r="3" />
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="team-name">Tasneem AbdElhakeem</h3>
+                        <p class="team-role">Supply Chain & Provenance</p>
+                        <div class="team-topic-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)"
+                                stroke-width="1.5">
+                                <rect x="1" y="3" width="15" height="13" rx="2" />
+                                <path d="M16 8h4l3 4v5h-7V8z" />
+                                <circle cx="5.5" cy="18.5" r="2.5" />
+                                <circle cx="18.5" cy="18.5" r="2.5" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card" data-member="2" style="--delay: 2">
+                    <div class="team-card-glow"></div>
+                    <div class="team-card-inner">
+                        <div class="team-avatar">
+                            <div class="team-avatar-ring"></div>
+                            <div class="team-avatar-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)"
+                                    stroke-width="1.5">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="team-name">Bassant Ali</h3>
+                        <p class="team-role">Decentralized Identity</p>
+                        <div class="team-topic-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)"
+                                stroke-width="1.5">
+                                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+                                <circle cx="12" cy="7" r="4" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card" data-member="3" style="--delay: 3">
+                    <div class="team-card-glow"></div>
+                    <div class="team-card-inner">
+                        <div class="team-avatar">
+                            <div class="team-avatar-ring"></div>
+                            <div class="team-avatar-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)"
+                                    stroke-width="1.5">
+                                    <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="team-name">Yaseen Hamdy</h3>
+                        <p class="team-role">Healthcare Data Management</p>
+                        <div class="team-topic-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)"
+                                stroke-width="1.5">
+                                <path
+                                    d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card" data-member="4" style="--delay: 4">
+                    <div class="team-card-glow"></div>
+                    <div class="team-card-inner">
+                        <div class="team-avatar">
+                            <div class="team-avatar-ring"></div>
+                            <div class="team-avatar-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)"
+                                    stroke-width="1.5">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <path d="M12 6v6l4 2" />
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="team-name">Mohamed Ayman</h3>
+                        <p class="team-role">Asset Tokenization & Smart Contracts</p>
+                        <div class="team-topic-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)"
+                                stroke-width="1.5">
+                                <line x1="12" y1="1" x2="12" y2="23" />
+                                <path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-card" data-member="5" style="--delay: 5">
+                    <div class="team-card-glow"></div>
+                    <div class="team-card-inner">
+                        <div class="team-avatar">
+                            <div class="team-avatar-ring"></div>
+                            <div class="team-avatar-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)"
+                                    stroke-width="1.5">
+                                    <polyline points="16 18 22 12 16 6" />
+                                    <polyline points="8 6 2 12 8 18" />
+                                    <line x1="14" y1="4" x2="10" y2="20" />
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="team-name">Abdallah Elsobky</h3>
+                        <p class="team-role">Technical Bottlenecks & Conclusion</p>
+                        <div class="team-topic-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)"
+                                stroke-width="1.5">
+                                <polygon
+                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. AGENDA SECTION -->
+    <section class="slide" id="slide-agenda" data-index="2">
+        <canvas id="agenda-canvas" class="section-canvas"></canvas>
+        <div class="slide-content">
+            <div class="section-header">
+                <span class="section-tag">Roadmap</span>
+                <h2 class="section-title">Presentation <span class="gradient-text">Agenda</span></h2>
+            </div>
+            <div class="agenda-timeline" id="agenda-timeline">
+                <div class="agenda-line"></div>
+                <div class="agenda-item" data-agenda="0" style="--delay:0">
+                    <div class="agenda-dot"><span>01</span></div>
+                    <div class="agenda-content">
+                        <h3>Introduction & Core Mechanics</h3>
+                        <p>Understanding the foundation of blockchain technology</p>
+                        <span class="agenda-presenter">Ahmed Bakry</span>
+                    </div>
+                </div>
+                <div class="agenda-item" data-agenda="1" style="--delay:1">
+                    <div class="agenda-dot"><span>02</span></div>
+                    <div class="agenda-content">
+                        <h3>Supply Chain & Provenance</h3>
+                        <p>Tracking products from origin to destination</p>
+                        <span class="agenda-presenter">Tasneem AbdElhakeem</span>
+                    </div>
+                </div>
+                <div class="agenda-item" data-agenda="2" style="--delay:2">
+                    <div class="agenda-dot"><span>03</span></div>
+                    <div class="agenda-content">
+                        <h3>Decentralized Identity (DID)</h3>
+                        <p>Self-sovereign identity & secure verification</p>
+                        <span class="agenda-presenter">Bassant Ali</span>
+                    </div>
+                </div>
+                <div class="agenda-item" data-agenda="3" style="--delay:3">
+                    <div class="agenda-dot"><span>04</span></div>
+                    <div class="agenda-content">
+                        <h3>Healthcare Data Management</h3>
+                        <p>Unified EHRs & patient-controlled access</p>
+                        <span class="agenda-presenter">Yaseen Hamdy</span>
+                    </div>
+                </div>
+                <div class="agenda-item" data-agenda="4" style="--delay:4">
+                    <div class="agenda-dot"><span>05</span></div>
+                    <div class="agenda-content">
+                        <h3>Asset Tokenization & Smart Legal Contracts</h3>
+                        <p>Fractional ownership & automated agreements</p>
+                        <span class="agenda-presenter">Mohamed Ayman</span>
+                    </div>
+                </div>
+                <div class="agenda-item" data-agenda="5" style="--delay:5">
+                    <div class="agenda-dot"><span>06</span></div>
+                    <div class="agenda-content">
+                        <h3>Technical Bottlenecks & Challenges</h3>
+                        <p>Scalability trilemma & engineering barriers</p>
+                        <span class="agenda-presenter">Abdallah Elsobky</span>
+                    </div>
+                </div>
+                <div class="agenda-item" data-agenda="6" style="--delay:6">
+                    <div class="agenda-dot"><span>07</span></div>
+                    <div class="agenda-content">
+                        <h3>Final Conclusion</h3>
+                        <p>Future vision for decentralized systems</p>
+                        <span class="agenda-presenter">Abdallah Elsobky</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. INTRO & CORE MECHANICS -->
+    <section class="slide" id="slide-intro" data-index="3">
+        <canvas id="intro-canvas" class="section-canvas"></canvas>
+        <div class="slide-content">
+            <div class="section-header">
+                <span class="section-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                    </svg> Ahmed Bakry</span>
+                <h2 class="section-title">Introduction & <span class="gradient-text">Core Mechanics</span></h2>
+            </div>
+            <div class="content-grid two-col">
+                <div class="content-card glass-card">
+                    <div class="card-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)"
+                            stroke-width="1.5">
+                            <rect x="3" y="3" width="7" height="7" rx="1" />
+                            <rect x="14" y="3" width="7" height="7" rx="1" />
+                            <rect x="3" y="14" width="7" height="7" rx="1" />
+                            <rect x="14" y="14" width="7" height="7" rx="1" />
+                            <line x1="10" y1="6.5" x2="14" y2="6.5" />
+                            <line x1="6.5" y1="10" x2="6.5" y2="14" />
+                            <line x1="17.5" y1="10" x2="17.5" y2="14" />
+                            <line x1="10" y1="17.5" x2="14" y2="17.5" />
+                        </svg>
+                    </div>
+                    <h3>Decentralized Distributed Ledger</h3>
+                    <p>A shared, replicated database spread across multiple nodes with no central authority. Every
+                        participant holds a complete copy, ensuring transparency and resilience.</p>
+                </div>
+                <div class="content-card glass-card">
+                    <div class="card-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)"
+                            stroke-width="1.5">
+                            <rect x="3" y="11" width="18" height="11" rx="2" />
+                            <path d="M7 11V7a5 5 0 0110 0v4" />
+                        </svg>
+                    </div>
+                    <h3>Immutability & Cryptographic Security</h3>
+                    <p>Once data is written to the blockchain, it cannot be altered. Each block is cryptographically
+                        linked to the previous one using SHA-256 hashing, forming an unbreakable chain.</p>
+                </div>
+                <div class="content-card glass-card">
+                    <div class="card-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)"
+                            stroke-width="1.5">
+                            <polyline points="16 18 22 12 16 6" />
+                            <polyline points="8 6 2 12 8 18" />
+                        </svg>
+                    </div>
+                    <h3>Smart Contracts</h3>
+                    <p>Self-executing programs deployed on the blockchain that automatically enforce agreements when
+                        predefined conditions are met — no intermediaries required.</p>
+                </div>
+                <div class="content-card glass-card">
+                    <div class="card-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)"
+                            stroke-width="1.5">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                        </svg>
+                    </div>
+                    <h3>Beyond Cryptocurrency</h3>
+                    <p>Blockchain is a software architecture pattern — a trustless, decentralized infrastructure
+                        applicable to supply chains, identity, healthcare, governance, and more.</p>
+                </div>
+            </div>
+            <!-- Animated Block Chain Visual -->
+            <div class="block-chain-visual" id="block-chain-visual">
+                <div class="block-item" style="--i:0">
+                    <div class="block-hash">0x7f3a...</div>
+                    <div class="block-label">Block #1</div>
+                    <div class="block-data">Genesis</div>
+                </div>
+                <div class="block-link-line"></div>
+                <div class="block-item" style="--i:1">
+                    <div class="block-hash">0x9c2b...</div>
+                    <div class="block-label">Block #2</div>
+                    <div class="block-data">Tx: 14</div>
+                </div>
+                <div class="block-link-line"></div>
+                <div class="block-item" style="--i:2">
+                    <div class="block-hash">0x4e8d...</div>
+                    <div class="block-label">Block #3</div>
+                    <div class="block-data">Tx: 27</div>
+                </div>
+                <div class="block-link-line"></div>
+                <div class="block-item new-block" style="--i:3">
+                    <div class="block-hash">Mining...</div>
+                    <div class="block-label">Block #4</div>
+                    <div class="block-data">Pending</div>
+                    <div class="mining-indicator"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. SUPPLY CHAIN & PROVENANCE -->
+    <section class="slide" id="slide-supply" data-index="4">
+        <canvas id="supply-canvas" class="section-canvas"></canvas>
+        <div class="slide-content">
+            <div class="section-header">
+                <span class="section-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                    </svg> Tasneem AbdElhakeem</span>
+                <h2 class="section-title">Supply Chain & <span class="gradient-text">Provenance</span></h2>
+            </div>
+            <div class="supply-chain-flow" id="supply-flow">
+                <div class="supply-node" data-node="0">
+                    <div class="supply-icon">
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)"
+                            stroke-width="1.5">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                        </svg>
+                    </div>
+                    <span>Origin</span>
+                    <div class="supply-status verified">Verified</div>
+                </div>
+                <div class="supply-arrow">
+                    <div class="supply-arrow-line"></div>
+                    <div class="supply-packet"></div>
+                </div>
+                <div class="supply-node" data-node="1">
+                    <div class="supply-icon">
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)"
+                            stroke-width="1.5">
+                            <rect x="1" y="3" width="15" height="13" rx="2" />
+                            <path d="M16 8h4l3 4v5h-7V8z" />
+                            <circle cx="5.5" cy="18.5" r="2.5" />
+                            <circle cx="18.5" cy="18.5" r="2.5" />
+                        </svg>
+                    </div>
+                    <span>Transport</span>
+                    <div class="supply-status transit">In Transit</div>
+                </div>
+                <div class="supply-arrow">
+                    <div class="supply-arrow-line"></div>
+                    <div class="supply-packet"></div>
+                </div>
+                <div class="supply-node" data-node="2">
+                    <div class="supply-icon">
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)"
+                            stroke-width="1.5">
+                            <path
+                                d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" />
+                        </svg>
+                    </div>
+                    <span>Warehouse</span>
+                    <div class="supply-status verified">Logged</div>
+                </div>
+                <div class="supply-arrow">
+                    <div class="supply-arrow-line"></div>
+                    <div class="supply-packet"></div>
+                </div>
+                <div class="supply-node" data-node="3">
+                    <div class="supply-icon">
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)"
+                            stroke-width="1.5">
+                            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4H6zM3 6h18" />
+                            <path d="M16 10a4 4 0 01-8 0" />
+                        </svg>
+                    </div>
+                    <span>Retail</span>
+                    <div class="supply-status verified">Delivered</div>
+                </div>
+            </div>
+            <div class="content-grid two-col" style="margin-top:2rem">
+                <div class="content-card glass-card">
+                    <div class="card-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none"
+                            stroke="var(--cyan)" stroke-width="1.5">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                            <circle cx="12" cy="12" r="3" />
+                        </svg></div>
+                    <h3>Product Tracking</h3>
+                    <p>Every product receives a unique digital identity on the blockchain, enabling full traceability
+                        from raw material sourcing to consumer delivery.</p>
+                </div>
+                <div class="content-card glass-card">
+                    <div class="card-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none"
+                            stroke="var(--cyan)" stroke-width="1.5">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                            <polyline points="9 12 11 14 15 10" />
+                        </svg></div>
+                    <h3>Anti-Counterfeit</h3>
+                    <p>Cryptographic verification ensures product authenticity. Consumers scan QR codes to verify the
+                        complete supply chain history of food and pharmaceuticals.</p>
+                </div>
+                <div class="content-card glass-card">
+                    <div class="card-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none"
+                            stroke="var(--cyan)" stroke-width="1.5">
+                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" />
+                            <polyline points="14 2 14 8 20 8" />
+                        </svg></div>
+                    <h3>Single Source of Truth</h3>
+                    <p>Eliminates redundant paperwork across logistics partners. One immutable ledger replaces dozens of
+                        fragmented record-keeping systems.</p>
+                </div>
+                <div class="content-card glass-card">
+                    <div class="card-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none"
+                            stroke="var(--cyan)" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="2" y1="12" x2="22" y2="12" />
+                            <path
+                                d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
+                        </svg></div>
+                    <h3>Global Logistics</h3>
+                    <p>Real-time tracking across international borders with blockchain-verified timestamps and
+                        tamper-proof shipping manifests.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. DECENTRALIZED IDENTITY -->
+    <section class="slide" id="slide-identity" data-index="5">
+        <canvas id="identity-canvas" class="section-canvas"></canvas>
+        <div class="slide-content">
+            <div class="section-header">
+                <span class="section-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                    </svg> Bassant Ali</span>
+                <h2 class="section-title">Decentralized <span class="gradient-text">Identity</span></h2>
+            </div>
+            <div class="identity-visual" id="identity-visual">
+                <div class="id-central-node">
+                    <div class="id-user-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)"
+                            stroke-width="1.5">
+                            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+                            <circle cx="12" cy="7" r="4" />
+                        </svg>
+                    </div>
+                    <span>You</span>
+                </div>
+                <div class="id-credential" data-cred="0" style="--angle: 0deg">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5">
+                        <rect x="2" y="2" width="20" height="8" rx="2" />
+                        <path d="M6 6h.01" />
+                    </svg>
+                    <span>Gov ID</span>
+                </div>
+                <div class="id-credential" data-cred="1" style="--angle: 60deg">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)"
+                        stroke-width="1.5">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                        <path d="M6 12v5a6 6 0 0012 0v-5" />
+                    </svg>
+                    <span>Diploma</span>
+                </div>
+                <div class="id-credential" data-cred="2" style="--angle: 120deg">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                    </svg>
+                    <span>Health</span>
+                </div>
+                <div class="id-credential" data-cred="3" style="--angle: 180deg">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)"
+                        stroke-width="1.5">
+                        <rect x="1" y="4" width="22" height="16" rx="2" />
+                        <line x1="1" y1="10" x2="23" y2="10" />
+                    </svg>
+                    <span>Finance</span>
+                </div>
+                <div class="id-credential" data-cred="4" style="--angle: 240deg">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5">
+                        <rect x="3" y="11" width="18" height="11" rx="2" />
+                        <path d="M7 11V7a5 5 0 0110 0v4" />
+                    </svg>
+                    <span>KYC</span>
+                </div>
+                <div class="id-credential" data-cred="5" style="--angle: 300deg">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)"
+                        stroke-width="1.5">
+                        <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z" />
+                    </svg>
+                    <span>Social</span>
+                </div>
+            </div>
+            <div class="content-grid two-col" style="margin-top: 2rem">
+                <div class="content-card glass-card">
+                    <h3>Problems with Centralization</h3>
+                    <p>Centralized identity systems create honeypots for hackers, single points of failure, and strip
+                        users of data sovereignty. Breaches expose millions of records at once.</p>
+                </div>
+                <div class="content-card glass-card">
+                    <h3>Self-Sovereign Identity</h3>
+                    <p>Users own and control their credentials in a digital wallet. Share only what's needed — prove
+                        you're over 18 without revealing your birthdate.</p>
+                </div>
+                <div class="content-card glass-card">
+                    <h3>User-Controlled Credentials</h3>
+                    <p>Verifiable credentials issued by trusted authorities, stored by the user, and presented to
+                        verifiers — all without contacting the original issuer.</p>
+                </div>
+                <div class="content-card glass-card">
+                    <h3>Zero-Knowledge KYC</h3>
+                    <p>Secure Know-Your-Customer verification using zero-knowledge proofs. Prove compliance without
+                        exposing raw personal data to every service provider.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. HEALTHCARE -->
+    <section class="slide" id="slide-health" data-index="6">
+        <canvas id="health-canvas" class="section-canvas"></canvas>
+        <div class="slide-content">
+            <div class="section-header">
+                <span class="section-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                    </svg> Yaseen Hamdy</span>
+                <h2 class="section-title">Healthcare <span class="gradient-text">Data Management</span></h2>
+            </div>
+            <div class="health-dashboard" id="health-dashboard">
+                <div class="health-panel glass-card">
+                    <div class="health-panel-header">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)"
+                            stroke-width="1.5">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                        </svg>
+                        <span>Patient Vitals</span>
+                        <div class="health-live-dot"></div>
+                    </div>
+                    <div class="health-chart" id="health-chart">
+                        <svg viewBox="0 0 300 80" class="heartbeat-svg">
+                            <polyline class="heartbeat-line" points="" fill="none" stroke="var(--cyan)"
+                                stroke-width="2" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="health-panel glass-card">
+                    <div class="health-panel-header">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)"
+                            stroke-width="1.5">
+                            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <path d="M23 21v-2a4 4 0 00-3-3.87" />
+                            <path d="M16 3.13a4 4 0 010 7.75" />
+                        </svg>
+                        <span>Access Permissions</span>
+                    </div>
+                    <div class="health-perms">
+                        <div class="perm-row"><span class="perm-name">Dr. Smith</span><span
+                                class="perm-badge granted">Full Access</span></div>
+                        <div class="perm-row"><span class="perm-name">City Hospital</span><span
+                                class="perm-badge granted">Read Only</span></div>
+                        <div class="perm-row"><span class="perm-name">Insurance Co.</span><span
+                                class="perm-badge limited">Claims Only</span></div>
+                        <div class="perm-row"><span class="perm-name">Research Lab</span><span
+                                class="perm-badge denied">Denied</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="content-grid two-col" style="margin-top:1.5rem">
+                <div class="content-card glass-card">
+                    <h3>Unified Electronic Health Records</h3>
+                    <p>A single patient record accessible across all healthcare providers. No more lost files, duplicate
+                        tests, or fragmented medical histories between hospitals.</p>
+                </div>
+                <div class="content-card glass-card">
+                    <h3>Secure Interoperability</h3>
+                    <p>Blockchain enables seamless, encrypted data exchange between hospitals, clinics, and pharmacies
+                        while maintaining strict HIPAA compliance.</p>
+                </div>
+                <div class="content-card glass-card">
+                    <h3>Patient-Controlled Access</h3>
+                    <p>Patients grant and revoke access to their medical records using smart contracts. Full audit trail
+                        of who accessed what data and when.</p>
+                </div>
+                <div class="content-card glass-card">
+                    <h3>Clinical Trial Integrity</h3>
+                    <p>Immutable recording of clinical trial data prevents manipulation. Timestamped results ensure
+                        transparent, trustworthy pharmaceutical research.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. ASSET TOKENIZATION -->
+    <section class="slide" id="slide-assets" data-index="7">
+        <canvas id="assets-canvas" class="section-canvas"></canvas>
+        <div class="slide-content">
+            <div class="section-header">
+                <span class="section-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                    </svg> Mohamed Ayman</span>
+                <h2 class="section-title">Asset Tokenization & <span class="gradient-text">Smart Contracts</span></h2>
+            </div>
+            <div class="token-visual" id="token-visual">
+                <div class="token-asset">
+                    <div class="token-building">
+                        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)"
+                            stroke-width="1">
+                            <rect x="4" y="2" width="16" height="20" rx="1" />
+                            <line x1="9" y1="6" x2="9" y2="6.01" />
+                            <line x1="12" y1="6" x2="12" y2="6.01" />
+                            <line x1="15" y1="6" x2="15" y2="6.01" />
+                            <line x1="9" y1="9" x2="9" y2="9.01" />
+                            <line x1="12" y1="9" x2="12" y2="9.01" />
+                            <line x1="15" y1="9" x2="15" y2="9.01" />
+                            <line x1="9" y1="12" x2="9" y2="12.01" />
+                            <line x1="12" y1="12" x2="12" y2="12.01" />
+                            <line x1="15" y1="12" x2="15" y2="12.01" />
+                            <rect x="10" y="16" width="4" height="6" />
+                        </svg>
+                        <span>Real Estate Asset</span>
+                        <span class="token-value">$2.4M</span>
+                    </div>
+                    <div class="token-arrow-container">
+                        <svg width="60" height="24" viewBox="0 0 60 24">
+                            <path d="M0 12 H50 M44 6 L56 12 L44 18" stroke="var(--cyan)" stroke-width="2" fill="none"
+                                class="token-arrow-path" />
+                        </svg>
+                        <span class="token-label">Tokenize</span>
+                    </div>
+                    <div class="token-pieces">
+                        <div class="token-piece" style="--i:0"><span>Token A</span><span class="token-pct">25%</span>
+                        </div>
+                        <div class="token-piece" style="--i:1"><span>Token B</span><span class="token-pct">25%</span>
+                        </div>
+                        <div class="token-piece" style="--i:2"><span>Token C</span><span class="token-pct">25%</span>
+                        </div>
+                        <div class="token-piece" style="--i:3"><span>Token D</span><span class="token-pct">25%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content-grid two-col" style="margin-top:2rem">
+                <div class="content-card glass-card">
+                    <h3>Fractional Ownership</h3>
+                    <p>High-value assets divided into tradeable tokens. Anyone can invest in real estate, art, or
+                        infrastructure with as little as $100 — democratizing investment.</p>
+                </div>
+                <div class="content-card glass-card">
+                    <h3>Tokenized Real Estate</h3>
+                    <p>Property rights encoded on-chain. Automated rental distributions, transparent ownership history,
+                        and instant peer-to-peer property transfers.</p>
+                </div>
+                <div class="content-card glass-card">
+                    <h3>Automated Land Registries</h3>
+                    <p>Smart contracts replace manual land registration processes. Immutable ownership records eliminate
+                        disputes, fraud, and bureaucratic delays.</p>
+                </div>
+                <div class="content-card glass-card">
+                    <h3>Smart Escrow Protocols</h3>
+                    <p>Funds held in smart contract escrow, released automatically upon condition fulfillment.
+                        Eliminates the need for third-party escrow agents.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. TECHNICAL BOTTLENECKS -->
+    <section class="slide" id="slide-tech" data-index="8">
+        <canvas id="tech-canvas" class="section-canvas"></canvas>
+        <div class="slide-content">
+            <div class="section-header">
+                <span class="section-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                    </svg> Abdallah Elsobky</span>
+                <h2 class="section-title">Technical <span class="gradient-text">Bottlenecks</span></h2>
+            </div>
+            <!-- Scalability Trilemma -->
+            <div class="trilemma" id="trilemma">
+                <svg class="trilemma-svg" viewBox="0 0 400 360">
+                    <polygon points="200,30 50,330 350,330" fill="none" stroke="var(--cyan)" stroke-width="2"
+                        opacity="0.3" />
+                    <line x1="200" y1="30" x2="50" y2="330" stroke="url(#triGrad1)" stroke-width="2" class="tri-line" />
+                    <line x1="50" y1="330" x2="350" y2="330" stroke="url(#triGrad2)" stroke-width="2"
+                        class="tri-line" />
+                    <line x1="350" y1="330" x2="200" y2="30" stroke="url(#triGrad3)" stroke-width="2"
+                        class="tri-line" />
+                    <defs>
+                        <linearGradient id="triGrad1">
+                            <stop offset="0%" stop-color="var(--cyan)" />
+                            <stop offset="100%" stop-color="var(--purple)" />
+                        </linearGradient>
+                        <linearGradient id="triGrad2">
+                            <stop offset="0%" stop-color="var(--purple)" />
+                            <stop offset="100%" stop-color="var(--blue)" />
+                        </linearGradient>
+                        <linearGradient id="triGrad3">
+                            <stop offset="0%" stop-color="var(--blue)" />
+                            <stop offset="100%" stop-color="var(--cyan)" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <div class="tri-label tri-top">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    </svg>
+                    <span>Security</span>
+                </div>
+                <div class="tri-label tri-left">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--purple)"
+                        stroke-width="1.5">
+                        <circle cx="12" cy="12" r="10" />
+                        <path
+                            d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
+                    </svg>
+                    <span>Decentralization</span>
+                </div>
+                <div class="tri-label tri-right">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                    </svg>
+                    <span>Scalability</span>
+                </div>
+                <div class="tri-center-label">Blockchain<br />Trilemma</div>
+            </div>
+            <div class="content-grid two-col" style="margin-top:1.5rem">
+                <div class="content-card glass-card">
+                    <h3>Scalability Trilemma</h3>
+                    <p>Blockchains can optimize for only two of three properties: security, scalability, and
+                        decentralization. Achieving all three simultaneously remains the core engineering challenge.</p>
+                </div>
+                <div class="content-card glass-card">
+                    <h3>Cross-Chain Interoperability</h3>
+                    <p>Different blockchains operate in silos. Bridges and relay chains attempt to connect them, but
+                        introduce security risks and complexity.</p>
+                </div>
+                <div class="content-card glass-card">
+                    <h3>Throughput Limitations</h3>
+                    <p>Bitcoin processes ~7 TPS, Ethereum ~30 TPS. Compare with Visa's 65,000 TPS. Layer-2 solutions and
+                        sharding aim to close this gap.</p>
+                    <div class="throughput-bars">
+                        <div class="tp-bar"><span class="tp-label">Bitcoin</span>
+                            <div class="tp-fill" style="--w:1%"></div><span class="tp-val">7 TPS</span>
+                        </div>
+                        <div class="tp-bar"><span class="tp-label">Ethereum</span>
+                            <div class="tp-fill" style="--w:4%"></div><span class="tp-val">30 TPS</span>
+                        </div>
+                        <div class="tp-bar"><span class="tp-label">Solana</span>
+                            <div class="tp-fill" style="--w:10%"></div><span class="tp-val">65K TPS</span>
+                        </div>
+                        <div class="tp-bar"><span class="tp-label">Visa</span>
+                            <div class="tp-fill visa" style="--w:100%"></div><span class="tp-val">65K TPS</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-card glass-card">
+                    <h3>Energy & Storage</h3>
+                    <p>Proof-of-Work consensus demands massive energy. Full node storage grows endlessly. Sustainable
+                        consensus mechanisms and pruning strategies are critical.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. CONCLUSION -->
+    <section class="slide" id="slide-conclusion" data-index="9">
+        <canvas id="conclusion-canvas" class="section-canvas"></canvas>
+        <div class="slide-content conclusion-content">
+            <div class="section-header">
+                <span class="section-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                    </svg> Abdallah Elsobky</span>
+                <h2 class="section-title">Final <span class="gradient-text">Conclusion</span></h2>
+            </div>
+            <div class="conclusion-points">
+                <div class="conclusion-point" style="--delay:0">
+                    <div class="cp-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)"
+                            stroke-width="1.5">
+                            <rect x="3" y="3" width="7" height="7" rx="1" />
+                            <rect x="14" y="3" width="7" height="7" rx="1" />
+                            <rect x="3" y="14" width="7" height="7" rx="1" />
+                            <rect x="14" y="14" width="7" height="7" rx="1" />
+                        </svg>
+                    </div>
+                    <p>Blockchain is <strong>more than cryptocurrency</strong> — it's a foundational technology for
+                        trustless systems.</p>
+                </div>
+                <div class="conclusion-point" style="--delay:1">
+                    <div class="cp-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--purple)"
+                            stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="2" y1="12" x2="22" y2="12" />
+                            <path
+                                d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
+                        </svg>
+                    </div>
+                    <p>Real-world industries — supply chain, healthcare, identity, real estate — are being
+                        <strong>transformed today</strong>.</p>
+                </div>
+                <div class="conclusion-point" style="--delay:2">
+                    <div class="cp-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--blue)"
+                            stroke-width="1.5">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                        </svg>
+                    </div>
+                    <p>The shift is from <strong>speculation to infrastructure</strong> — decentralized system design is
+                        the future.</p>
+                </div>
+                <div class="conclusion-point" style="--delay:3">
+                    <div class="cp-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)"
+                            stroke-width="1.5">
+                            <polyline points="16 18 22 12 16 6" />
+                            <polyline points="8 6 2 12 8 18" />
+                        </svg>
+                    </div>
+                    <p>The future belongs to <strong>engineers who build decentralized systems</strong>, not
+                        speculators.</p>
+                </div>
+            </div>
+            <blockquote class="conclusion-quote" id="final-quote">
+                <span class="quote-mark">"</span>
+                The Future of Blockchain Is Decentralized System Design, Not Financial Speculation.
+                <span class="quote-mark">"</span>
+            </blockquote>
+        </div>
+    </section>
+
+    <!-- 11. THANK YOU -->
+    <section class="slide" id="slide-thanks" data-index="10">
+        <canvas id="thanks-canvas" class="section-canvas"></canvas>
+        <div class="slide-content thanks-content">
+            <h2 class="thanks-title">Thank <span class="gradient-text">You</span></h2>
+            <p class="thanks-subtitle">For exploring the future of decentralized systems with us</p>
+            <div class="thanks-team">
+                <div class="thanks-member" style="--delay:0">Ahmed Bakry</div>
+                <div class="thanks-divider">·</div>
+                <div class="thanks-member" style="--delay:1">Tasneem AbdElhakeem</div>
+                <div class="thanks-divider">·</div>
+                <div class="thanks-member" style="--delay:2">Bassant Ali</div>
+                <div class="thanks-divider">·</div>
+                <div class="thanks-member" style="--delay:3">Yaseen Hamdy</div>
+                <div class="thanks-divider">·</div>
+                <div class="thanks-member" style="--delay:4">Mohamed Ayman</div>
+                <div class="thanks-divider">·</div>
+                <div class="thanks-member" style="--delay:5">Abdallah Elsobky</div>
+            </div>
+            <div class="thanks-badge">
+                <span>ITI — Information Technology Institute</span>
+            </div>
+        </div>
+    </section>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
